@@ -6,10 +6,12 @@
   "dependencies": {
     "@zeit/next-css": "^0.2.0",
     "firebase": "^5.4.2",
-    "next": "^6.1.2",
+    "next": "^6.1.1-canary.2",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "react-redux": "^5.0.7",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "react-redux": "^5.0.7",
@@ -19,7 +21,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export"
+    "export": "npm run build && next export & sleep 300 ; kill $!"
   },
   "author": "",
   "license": "ISC"
