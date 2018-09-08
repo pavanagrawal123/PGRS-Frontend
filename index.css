@@ -1,0 +1,20 @@
+.signin {
+    background-color: #6ebfee;
+    padding: 20px;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+.signincontainer {
+    padding: 5px;   
+    background-color: white;
+    width: 360px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.signinbutton {
+    margin: 5px;
+
+}
+input::placeholder {
+    color: black;
+}

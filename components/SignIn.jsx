@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Router from 'next/router'
 //import { withRouter } from 'react-router-dom';
 
 //import { SignUpLink } from './SignUp';
@@ -41,7 +42,7 @@ class SignInForm extends Component {
     auth.doSignInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        history.push(routes.HOME);
+        Router.push(routes.HOME);
       })
       .catch(error => {
         this.setState(byPropKey('error', error));
@@ -63,19 +64,23 @@ class SignInForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          value={email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={password}
-          onChange={event => this.setState(byPropKey('password', event.target.value))}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
+        <div className="signincontainer">
+          <input
+            value={email}
+            onChange={event => this.setState(byPropKey('email', event.target.value))}
+            type="text"
+            placeholder="Email Address"
+          />
+        </div>
+        <div className="signincontainer">
+          <input
+            value={password}
+            onChange={event => this.setState(byPropKey('password', event.target.value))}
+            type="password"
+            placeholder="Password"
+          />
+        </div>
+        <button className="waves-effect waves-light btn signinbutton" disabled={isInvalid} type="submit">
           Sign In
         </button>
 
