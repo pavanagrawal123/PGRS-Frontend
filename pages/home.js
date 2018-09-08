@@ -11,7 +11,7 @@ export default class List extends React.Component {
         }
     }
     componentDidMount() {
-        this.props.fetchItems();
+        //this.props.fetchItems();
     }
     componentWillMount() {
         itemsRef.on('value', (snapshot) => {
