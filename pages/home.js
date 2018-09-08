@@ -2,48 +2,51 @@ import Navigation from '../components/Navigation'
 import * as actions from "../actions";
 import Item from "../components/Item";
 import { connect } from "react-redux";
-import _ from "lodash";
-class List extends React.Component {
+import { itemsRef } from '../firebase';
+export default class List extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            currentItem: '',
+            username: '',
+            items: []
+        }
+    }
     componentDidMount() {
-        this.props.fetchItems();
+        //this.props.fetchItems();
     }
     componentWillMount() {
-        
-    }
-    renderItems() {
-        const { data } = this.props;
-        const items = _.map(data, (value, key) => {
-          return <Item key={key} todoId={key} item={value} />;
+        itemsRef.on('value', (snapshot) => {
+            let items = snapshot.val();
+            let newState = [];
+            for (let item in items) {
+                newState.push({
+                    id: item,
+                    item: items[item]
+                });
+            }
+            this.setState({
+                items: newState
+            });
         });
-        if (!_.isEmpty(items)) {
-          return items;
-        }
-        return (
-          <div className="col s10 offset-s1 center-align">
-            <img
-              alt="Nothing was found"
-              id="nothing-was-found"
-              src="/img/nothing.png"
-            />
-            <h4>You have completed all the tasks</h4>
-            <p>Start by clicking add button in the bottom of the screen</p>
-          </div>
-        );
-      }
-    
+    }
+
     render() {
         return (
             <div>
                 <Navigation> </Navigation>
-                {this.renderItems()}
+                <section className='display-item'>
+                    <div className="wrapper">
+                        <ul>
+                            {this.state.items.map((item) => {
+                                return (
+                                    <Item {...item.item} /> 
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </section>
             </div>
         )
     }
 }
-const mapStateToProps = ({ data }) => {
-    return {
-      data
-    };
-  };
-
-export default connect(mapStateToProps, actions)(List);
