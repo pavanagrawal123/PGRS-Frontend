@@ -21,7 +21,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export & sleep 300 ; kill $!"
+    "export": "npm run build && next export & sleep 100 ; kill $!"
   },
   "author": "",
   "license": "ISC"

@@ -1,6 +1,6 @@
 import Navigation from '../components/Navigation'
 import Item from "../components/Item";
-//import { itemsRef } from '../firebase';
+import { itemsRef } from '../firebase';
 export default class List extends React.Component {
     constructor() {
         super();
@@ -11,10 +11,10 @@ export default class List extends React.Component {
         }
     }
     componentDidMount() {
-        //this.props.fetchItems();
+        this.props.fetchItems();
     }
     componentWillMount() {
-        /* itemsRef.on('value', (snapshot) => {
+        itemsRef.on('value', (snapshot) => {
             let items = snapshot.val();
             let newState = [];
             for (let item in items) {
@@ -26,7 +26,7 @@ export default class List extends React.Component {
             this.setState({
                 items: newState
             }); 
-        });*/
+        });
     }
 
     render() {
