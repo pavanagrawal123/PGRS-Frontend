@@ -14,18 +14,18 @@ export default class List extends React.Component {
         //this.props.fetchItems();
     }
     componentWillMount() {
-        itemsRef.on('value', (snapshot) => {
-            let items = snapshot.val();
+        itemsRef.orderByChild('upvoted').on('value', (snapshot) => {
             let newState = [];
-            for (let item in items) {
+            snapshot.forEach(function(child) {
                 newState.push({
-                    id: item,
-                    item: items[item]
+                    id: child,
+                    item: child.val()
                 });
-            }
+            });
+            newState = newState.reverse()
             this.setState({
                 items: newState
-            }); 
+            });
         });
     }
 
@@ -38,7 +38,7 @@ export default class List extends React.Component {
                         <ul>
                             {this.state.items.map((item) => {
                                 return (
-                                    <Item {...item.item} /> 
+                                    <Item loc={item.id} {...item.item} />
                                 )
                             })}
                         </ul>
