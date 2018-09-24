@@ -9,3 +9,6 @@ Our application is has two componenets, the web application, and the mobile appl
 The web application is meant for service provdiders to view these complaints, and send technicians directly to the locations based on how close they are to the site.
 
 We won 1st place in the hackathon with this application!
+
+Link to the native Android application:
+[PGRS-Android](https://github.com/ashwintantri/PGRS_Frontend)
