@@ -11,4 +11,4 @@ The web application is meant for service provdiders to view these complaints, an
 We won 1st place in the hackathon with this application!
 
 Link to the native Android application:
-[PGRS-Android](https://github.com/ashwintantri/PGRS_Frontend)
+[PGRS-Android](https://github.com/ashwintantri/PGRS_Android)
