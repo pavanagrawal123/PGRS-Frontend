@@ -18,7 +18,8 @@ export default class Result extends React.Component {
         return (
             <div class="container signin">
                 <div className="row">
-                    <div className="col s-6">
+                    <div className="col-centered">
+
                         <SignInForm />
                     </div>
                 </div>

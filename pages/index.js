@@ -16,7 +16,7 @@ export default class Result extends React.Component {
             <div>
                 {store.getState().articles.toString()}
                 <Navigation />
-                Welcome to next.js!
+                Bombay Municipal Corporation
             </div>
         )
 

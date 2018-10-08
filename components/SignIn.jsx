@@ -63,16 +63,21 @@ class SignInForm extends Component {
       email === '';
 
     return (
+
       <form onSubmit={this.onSubmit}>
-        <div className="signincontainer">
-          <input
-            value={email}
-            onChange={event => this.setState(byPropKey('email', event.target.value))}
-            type="text"
-            placeholder="Email Address"
-          />
+        <div class="signincontainer col-centered">
+          <h1 class="title">LOG IN</h1>
+          <div class="input">
+            <input
+              value={email}
+              onChange={event => this.setState(byPropKey('email', event.target.value))}
+              type="text"
+              placeholder="Username"
+            />
+            <span class="spin"></span>
+          </div>
         </div>
-        <div className="signincontainer">
+        <div className="signincontainer col-centered">
           <input
             value={password}
             onChange={event => this.setState(byPropKey('password', event.target.value))}
@@ -80,12 +85,13 @@ class SignInForm extends Component {
             placeholder="Password"
           />
         </div>
-        <button className="waves-effect waves-light btn signinbutton" disabled={isInvalid} type="submit">
-          Sign In
-        </button>
+        <div class="button login col-centered">
+         <button><span>GO</span> <i class="fa fa-check"></i></button>
+      </div>
 
         { error && <p>{error.message}</p> }
       </form>
+
     );
   }
 }

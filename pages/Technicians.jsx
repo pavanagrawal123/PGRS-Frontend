@@ -12,9 +12,8 @@ export default class Result extends React.Component {
     render() {
         return (
             <div>
-                
                 <Navigation />
-                Welcome to next.js!
+                Bombay Municipal Corporation Admin Dashboard
             </div>
         )
 

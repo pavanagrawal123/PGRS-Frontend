@@ -33,8 +33,8 @@ export default class List extends React.Component {
         return (
             <div>
                 <Navigation> </Navigation>
-                <section className='display-item'>
-                    <div className="wrapper">
+                <section className='display-item container1'>
+                    <div className="wrapper ">
                         <ul>
                             {this.state.items.map((item) => {
                                 return (

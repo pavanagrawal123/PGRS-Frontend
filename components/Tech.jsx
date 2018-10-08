@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { firebase } from '../firebase';
+
+
 export default class Tech extends Component {
     constructor() {
         super();
         this.mark=this.mark.bind(this);
     }
+
     render() {
         return (
         <div className="row">
@@ -25,6 +28,6 @@ export default class Tech extends Component {
     }
     mark() {
         firebase.blah.ref(this.props.loc.key + "/status").set("Dispatched");
-
+        firebase.blah.ref(this.props.loc.key + "/authority").set(this.props.name);
     }
 }

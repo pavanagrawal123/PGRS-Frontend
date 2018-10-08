@@ -24,23 +24,26 @@ export default class Item extends Component {
                          Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
                          Math.sin(dLon/2) * Math.sin(dLon/2);  
          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-         return R * c; 
+         return Math.ceil(R * c); 
     }
     componentDidMount() {
-        itemsRef.child('Technicians').on('value', (snapshot) => {
-            let items = snapshot.val();
-            let newState = [];
-            for (let item in items) {
-                let dis = this.distance(items[item].lat, items[item].longitude, this.props.lat, this.props.lon);
-                newState.push({
-                    distance: dis,
-                    item: items[item]
+        if (typeof this.props.dept !== 'undefined') {
+            itemsRef.child('Technicians').orderByChild('department').equalTo(this.props.dept).on('value', (snapshot) => {        
+                //itemsRef.child('Technicians').on('value', (snapshot) => {
+                    let items = snapshot.val();
+                    let newState = [];
+                    for (let item in items) {
+                        let dis = this.distance(items[item].lat, items[item].longitude, this.props.lat, this.props.lon);
+                        newState.push({
+                            distance: dis + ' meters',
+                            item: items[item]
+                        });
+                    }
+                    this.setState({
+                        items: newState
+                    }); 
                 });
-            }
-            this.setState({
-                items: newState
-            }); 
-        });
+        }
     }
     render() {
         return(
